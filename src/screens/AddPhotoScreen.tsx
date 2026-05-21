@@ -13,7 +13,7 @@ export default function AddPhotoScreen({ onNavigateBack }: AddPhotoScreenProps) 
   const [imageUri, setImageUri] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // Opção 1: Capturar da Câmera
+  
   const handleLaunchCamera = async () => {
     const permission = await ImagePicker.requestCameraPermissionsAsync();
     if (!permission.granted) {
@@ -26,7 +26,7 @@ export default function AddPhotoScreen({ onNavigateBack }: AddPhotoScreenProps) 
     }
   };
 
-  // Opção 2: Selecionar da Galeria do Aparelho
+  
   const handleSelectFromLibrary = async () => {
     const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (!permission.granted) {
@@ -51,7 +51,7 @@ export default function AddPhotoScreen({ onNavigateBack }: AddPhotoScreenProps) 
 
     setLoading(true);
     try {
-      // Solicita e obtém localização no exato momento do cadastro
+
       const locationPerm = await Location.requestForegroundPermissionsAsync();
       let lat = null, lon = null;
 
@@ -63,7 +63,7 @@ export default function AddPhotoScreen({ onNavigateBack }: AddPhotoScreenProps) 
         Alert.alert("Aviso", "Foto salva sem coordenadas porque a localização foi negada.");
       }
 
-      // Salva os dados estruturados no SQLite
+     
       insertPhoto({ title, imageUri, latitude: lat, longitude: lon });
       Alert.alert("Sucesso", "Dados persistidos no SQLite!");
       onNavigateBack();

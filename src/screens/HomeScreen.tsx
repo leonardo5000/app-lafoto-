@@ -35,7 +35,6 @@ export default function HomeScreen({ onNavigateTo }: HomeScreenProps) {
     <View style={styles.container}>
       <Text style={styles.headerTitle}>📸 Galeria de Fotos</Text>
 
-      {/* Menu de Navegação Superior */}
       <View style={styles.navMenu}>
         <TouchableOpacity style={[styles.navButton, styles.addBtn]} onPress={() => onNavigateTo("add")}>
           <Text style={styles.navButtonText}>➕ Adicionar Imagem</Text>
@@ -45,7 +44,6 @@ export default function HomeScreen({ onNavigateTo }: HomeScreenProps) {
         </TouchableOpacity>
       </View>
 
-      {/* Listagem */}
       <FlatList
         data={photos}
         keyExtractor={(item) => item.id.toString()}
